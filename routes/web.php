@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SpaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [SpaController::class, 'index'])->name('home');
+Route::get('/login', [SpaController::class, 'showLoginForm'])->name('show-login');
+Route::post('/login', [SpaController::class, 'login'])->name('login');
+Route::get('/dashboard', [SpaController::class, 'dashboard'])->name('dashboard');
